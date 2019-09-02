@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lchen/workspace_hackerrank/test3/main.cpp
+limits
+-
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+stack
+-
+
