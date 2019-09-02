@@ -1,3 +1,0 @@
-/home/lchen/workspace_hackerrank/amazon_20190822/test1/CMakeFiles/rebuild_cache.dir
-/home/lchen/workspace_hackerrank/amazon_20190822/test1/CMakeFiles/test1.dir
-/home/lchen/workspace_hackerrank/amazon_20190822/test1/CMakeFiles/edit_cache.dir
