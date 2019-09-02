@@ -1,0 +1,3 @@
+/home/lchen/workspace_hackerrank/test2/CMakeFiles/rebuild_cache.dir
+/home/lchen/workspace_hackerrank/test2/CMakeFiles/hack.dir
+/home/lchen/workspace_hackerrank/test2/CMakeFiles/edit_cache.dir

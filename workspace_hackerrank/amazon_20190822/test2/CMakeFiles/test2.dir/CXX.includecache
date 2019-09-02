@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lchen/workspace_hackerrank/amazon_20190822/test2/main.cpp
+iostream
+-
+vector
+-
+utility
+-
+sstream
+-
+benchmark/benchmark.h
+-
+

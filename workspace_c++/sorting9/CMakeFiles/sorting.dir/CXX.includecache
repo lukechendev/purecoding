@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lchen/workspace_c++/sorting9/main.cpp
+iostream
+-
+vector
+-
+util.h
+/home/lchen/workspace_c++/sorting9/util.h
+sorting.h
+/home/lchen/workspace_c++/sorting9/sorting.h
+
+/home/lchen/workspace_c++/sorting9/sorting.cpp
+sorting.h
+/home/lchen/workspace_c++/sorting9/sorting.h
+
+/home/lchen/workspace_c++/sorting9/sorting.h
+vector
+-
+
+/home/lchen/workspace_c++/sorting9/util.cpp
+iostream
+-
+fstream
+-
+util.h
+/home/lchen/workspace_c++/sorting9/util.h
+
+/home/lchen/workspace_c++/sorting9/util.h
+string
+-
+vector
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++14 -Wall -Wextra -Werror -g  -rdynamic CMakeFiles/hack.dir/main.cpp.o  -o hack 
