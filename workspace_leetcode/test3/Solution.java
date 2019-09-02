@@ -109,13 +109,6 @@ class Solution {
     romansArr['M'-'A'] = 1000;
   }
 
-    romans.put("IV", 4);
-    romans.put("IX", 9);
-    romans.put("XL", 40);
-    romans.put("XC", 90);
-    romans.put("CD", 400);
-    romans.put("CM", 900);
-
   public int romanToInt2(String s) {
     int number = 0;
 
@@ -124,11 +117,32 @@ class Solution {
       return 0;
     }
 
-    char curPre = s.charAt(i-1);
-    for (int i = 1; i < n; ++i) {
-      char curPre = s.charAt(i-1);
-      char cur = s.charAt(i);
-      if (curPre == 'I' && curPre == 'V')
+    int i = 0;
+    char cur = s.charAt(i);
+    if (n == 1) {
+      return romansArr[cur-'A'];
+    }
+
+    char curnext = s.charAt(++i);
+    while (cur != 0) {
+      if (curnext == 0) {
+        number += romansArr[cur-'A'];
+        break;
+      }
+
+      if ((cur == 'I' && (curnext == 'V' || curnext == 'X')) ||
+         (cur == 'X' && (curnext == 'L' || curnext == 'C')) ||
+         (cur == 'C' && (curnext == 'D' || curnext == 'M'))) {
+         number += romansArr[curnext-'A'] - romansArr[cur-'A'];
+
+         cur = ++i < n ? s.charAt(i) : 0;
+         curnext = ++i < n ? s.charAt(i) : 0;
+         continue;
+      }
+
+      number += romansArr[cur-'A'];
+      cur = curnext;
+      curnext = ++i < n ? s.charAt(i) : 0;
     }
 
     return number;
@@ -137,7 +151,7 @@ class Solution {
   public static void test(String input, int expected) {
     Solution s = new Solution();
     // long ts = System.nanoTime();
-    int ret = s.romanToInt(input);
+    int ret = s.romanToInt2(input);
     // System.out.println(System.nanoTime() - ts);
     if (ret == expected) {
       System.out.println("Passed");
