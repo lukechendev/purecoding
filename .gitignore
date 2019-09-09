@@ -1,3 +1,6 @@
+#General
+*.swp
+
 # C++
 # Prerequisites
 *.d
