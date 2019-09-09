@@ -199,7 +199,11 @@ class Solution {
       while (lo < hi) {
         int sum = nums[lo] + nums[hi];
         if (sum == exp) {
-          ret.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+          List<Integer> entry = Arrays.asList(nums[i], nums[lo], nums[hi]);
+          if (!ret.contains(entry)) {
+            ret.add(entry);
+          }
+
           do {
             lo++;
           } while (lo < hi && nums[lo] == nums[lo-1]);
