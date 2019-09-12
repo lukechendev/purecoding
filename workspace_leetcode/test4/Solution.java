@@ -16,6 +16,10 @@ A solution set is:
   [-1, 0, 1],
   [-1, -1, 2]
 ]
+
+Lessons:
+1) threeSum4: Avoid calling List.contains(), which adds another iteration to the loop.
+2) threeSum5: Take the advantage of using byte[] to index the locaton information of each number in nums.
 */
 
 import java.util.List;
@@ -24,7 +28,127 @@ import java.util.Collections;
 import java.util.Arrays;
 
 class Solution {
-  
+
+  public List<List<Integer>> threeSumExample2(int[] nums) {
+    List<List<Integer>> result = new ArrayList<>();
+    Arrays.sort(nums);
+    for(int i = 0; i < nums.length - 2; i++){
+	if(i > 0 && nums[i] == nums[i - 1])
+	    continue;
+	int j = i + 1, k = nums.length - 1;
+	int target = -nums[i];
+	while(j < k){
+	    if(nums[j] + nums[k] == target){
+		result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+		j++;
+		k--;
+		while(j < k && nums[j] == nums[j - 1])j++;
+		while(j < k && nums[k] == nums[k + 1])k--;
+	    }
+	    else if(nums[j] + nums[k] > target)
+		k--;
+	    else
+		j++;
+	}
+    }
+    return result;
+  }
+
+  public List<List<Integer>> threeSumExample(int[] nums) {
+    int len = nums.length;
+    if (len < 3) return new ArrayList<>();
+
+    // Sort input array 1st
+    Arrays.sort(nums);
+    List<List<Integer>> res = new ArrayList<>();
+
+    // Allocate enough space to avoid check in if statement
+    int max = Math.max(nums[len - 1], Math.abs(nums[0]));
+    byte[] hash = new byte[(max << 1) + 1];
+
+    // Hash and count appearing times of every num
+    for (int v : nums) {
+      hash[v + max]++;
+    }
+
+    // Search the position of 0. 
+    // It also represents the position of the last negative number in the array
+    int lastNeg = Arrays.binarySearch(nums, 0);
+
+    // The pos. of the 1st pos. number in the array
+    int firstPos = lastNeg;
+
+    // 0 not found
+    if (lastNeg < 0) {
+      firstPos = ~lastNeg;
+      lastNeg = -lastNeg - 2;
+      // see Java API
+    } else {
+      // found
+      // skip all 0
+      while (lastNeg >= 0 && nums[lastNeg] == 0) --lastNeg;
+      while (firstPos < len && nums[firstPos] == 0) ++firstPos;
+      int zeroCount = firstPos - lastNeg - 1;
+
+      // 0 appears 3 times at least
+      if (zeroCount >= 3) {
+        res.add(Arrays.asList(0, 0, 0));
+      }
+
+      // 0 appears at least 1 time
+      if (zeroCount > 0) {
+        // traverse all the pos. numbers to see whether or not there's a neg. number whose abs. val.
+        // equals the pos. number
+        for (int i = firstPos; i < len; ++i) {
+          // skip duplicate (same) elements
+          if (i > firstPos && nums[i] == nums[i - 1]) continue;
+          if (hash[-nums[i] + max] > 0) {
+            res.add(Arrays.asList(0, nums[i], -nums[i]));
+          }
+        }
+      }
+    }
+    // one positive number and two negetive numbers
+    // traverse all the pos. numbers to find whether there are 2 neg. numbers to make the 3 numbers
+    // add up to 0
+    for (int i = firstPos; i < len; ++i) {
+      // skip dups. (same elements)
+      if (i > firstPos && nums[i] == nums[i - 1]) continue;
+      // we can only traverse half of the pos. numbers
+      int half;
+      if (nums[i] % 2 != 0) half = -((nums[i] >> 1) + 1);
+      else {
+        half = -(nums[i] >> 1);
+        if (hash[half + max] > 1) res.add(Arrays.asList(nums[i], half, half));
+      }
+      for (int j = lastNeg; j >= 0 && nums[j] > half; --j) {
+        if (j < lastNeg && nums[j] == nums[j + 1]) continue;
+        if (hash[(-nums[i] - nums[j]) + max] > 0)
+          res.add(Arrays.asList(nums[i], nums[j], -nums[i] - nums[j]));
+      }
+    }
+    // one negative number and two positive numbers
+    // traverse all the negative numbers to find whether there are two positive numbers to make the
+    // 3 numbers add up to 0
+    for (int i = lastNeg; i >= 0; --i) {
+      // skip dups. (same elements)
+      if (i < lastNeg && nums[i] == nums[i + 1]) continue;
+      // we can only traverse half of the negative numbers
+      int half;
+      if (nums[i] % 2 != 0) half = -(nums[i] / 2 - 1);
+      else {
+        half = -(nums[i] >> 1);
+        if (hash[half + max] > 1) res.add(Arrays.asList(nums[i], half, half));
+      }
+      for (int j = firstPos; j < len && nums[j] < half; ++j) {
+        if (j > firstPos && nums[j] == nums[j - 1]) continue;
+        if (hash[(-nums[i] - nums[j]) + max] > 0)
+          res.add(Arrays.asList(nums[i], nums[j], -nums[i] - nums[j]));
+      }
+    }
+    return res;
+  }
+
   public List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> ret = new ArrayList<List<Integer>>();
 
@@ -222,10 +346,90 @@ class Solution {
     return ret;
   }
 
+  public List<List<Integer>> threeSum4(int[] nums) {
+    List<List<Integer>> ret = new ArrayList<List<Integer>>();
+    int size = nums.length;
+    Arrays.sort(nums);
+
+    for (int i = 0; i < size - 2; ++i) {
+      if (i > 0 && nums[i] == nums[i-1]) {
+        continue;
+      }
+
+      int lo = i + 1;
+      int hi = size - 1;
+      int exp = 0 - nums[i];
+
+      while (lo < hi) {
+        int sum = nums[lo] + nums[hi];
+        if (sum == exp) {
+          ret.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+
+          do {
+            lo++;
+          } while (lo < hi && nums[lo] == nums[lo-1]);
+
+          do {
+            hi--;
+          } while (lo < hi && nums[hi] == nums[hi+1]);
+        } else if (sum < exp) {
+          do {
+            lo++;
+          } while (lo < hi && nums[lo] == nums[lo-1]);
+        } else {
+          do {
+            hi--;
+          } while (lo < hi && nums[hi] == nums[hi+1]);
+        }
+      }
+    }
+
+    return ret;
+  }
+
+  public List<List<Integer>> threeSum5(int[] nums) {
+    List<List<Integer>> result = new ArrayList<List<Integer>>();
+
+    if (nums.length == 0) {
+      return result;
+    }
+    
+    Arrays.sort(nums);
+
+    int len = nums.length;
+    int min = nums[0];
+
+    byte[] posArr = new byte[nums[len-1]-nums[0]+1];
+    for (int n : nums) {
+      if(posArr[n-min] < 3) {
+        posArr[n-min]++;
+      }
+    }
+    
+    for (int i = 0; i < len - 2; ++i) {
+      if (i > 0 && nums[i] == nums[i-1]) {
+        continue;
+      }
+
+      for (int j = i + 1; j < len - 1; ++j) {
+        if (j > i + 1 && nums[j] == nums[j-1]) {
+          continue;
+        }
+
+        int target = 0 - (nums[i] + nums[j]);
+        if ((target-min < posArr.length) && (target >= nums[j]) && posArr[target-min] > ((target == nums[i] && target == nums[j]) ? 2 : target == nums[j] ? 1 : 0)) {
+          result.add(Arrays.asList(nums[i], nums[j], target));
+        }
+      }
+    }
+
+    return result;
+  }
+
   public static void test(int[] input, List<List<Integer>> expected) {
     Solution s = new Solution();
     // long ts = System.nanoTime();
-    List<List<Integer>> ret = s.threeSum3(input);
+    List<List<Integer>> ret = s.threeSum5(input);
     // System.out.println(System.nanoTime() - ts);
     if (testEquals(ret, expected)) {
       System.out.println("Passed");
@@ -313,5 +517,18 @@ class Solution {
     item44.add(2);
     expected4.add(item44);
     test(input4, expected4);
+
+    int[] input5 = {-1, 0, 1, 0};
+    List<List<Integer>> expected5 = new ArrayList<List<Integer>>();
+    List<Integer> item51 = new ArrayList<Integer>();
+    item51.add(-1);
+    item51.add(0);
+    item51.add(1);
+    expected5.add(item51);
+    test(input5, expected5);
+
+    int[] input6 = {};
+    List<List<Integer>> expected6 = new ArrayList<List<Integer>>();
+    test(input6, expected6);
   }
 }
