@@ -2,7 +2,7 @@
 <Problem description>
 */
 
-class Solution {
+public class Solution {
   
   public int resolve(String s) {
     return 0;
