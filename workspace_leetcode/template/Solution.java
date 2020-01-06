@@ -12,7 +12,7 @@ public class Solution {
         Solution s = new Solution();
         // long ts = System.nanoTime();
         int ret = s.resolve(input);
-        // System.out.println(System.nanoTime() - ts);
+        // System.out.format("%,d" + " ns%n", System.nanoTime() - ts);
         System.out.println("Result: \n" + ret);
         if (ret == expected) {
             System.out.println("Passed");
