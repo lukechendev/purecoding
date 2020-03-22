@@ -1,3 +1,4 @@
+package lchen.datastructure.linkedlist;
 
 public class LinkedList {
 
