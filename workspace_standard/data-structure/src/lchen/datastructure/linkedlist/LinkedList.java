@@ -65,7 +65,7 @@ public class LinkedList {
 		System.out.println(this.toString());
 	}
 
-	// To execute
+	// To test
 	public static void main(String[] args) {
 		System.out.println("LinkedList");
 
@@ -86,6 +86,14 @@ public class LinkedList {
 		list.print();
 		list.deleteWithValue(5); // 1,2,3,4
 		list.print();
+		list.deleteWithValue(4); // 1,2,3
+		list.print();
+		list.deleteWithValue(4); // 1,2,3
+		list.print();
+
+		LinkedList list2 = new LinkedList();
+		list2.deleteWithValue(1);
+		list2.print();
 	}
 }
 
