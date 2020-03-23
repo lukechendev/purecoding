@@ -112,13 +112,13 @@ public class Queue {
         System.out.println(queue.isEmpty()); // true //
         queue.print();
     }
-}
 
-class Node {
-    int data;
-    Node next;
+    private class Node {
+        private int data;
+        private Node next;
 
-    public Node(int data) {
-        this.data = data;
+        private Node(int data) {
+            this.data = data;
+        }
     }
 }

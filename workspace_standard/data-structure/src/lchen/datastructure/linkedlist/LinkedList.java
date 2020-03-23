@@ -95,13 +95,13 @@ public class LinkedList {
         list2.deleteWithValue(1);
         list2.print();
     }
-}
 
-class Node {
-    int data;
-    Node next;
+    private static class Node {
+        private int data;
+        private Node next;
 
-    Node(int data) {
-        this.data = data;
+        private Node(int data) {
+            this.data = data;
+        }
     }
 }
