@@ -1,7 +1,7 @@
 package lchen.datastructure.sort;
 
 public class BucketSort {
-    public static void bulkSort(int[] data) {
+    public static void bucketSort(int[] data) {
         int min = data[0];
         int max = data[0];
         for (int i = 1; i < data.length; ++i) {
@@ -12,14 +12,14 @@ public class BucketSort {
             }
         }
 
-        int[] bulks = new int[max - min + 1];
+        int[] buckets = new int[max - min + 1];
         for (int i = 0; i < data.length; ++i) {
-            bulks[data[i] - min]++;
+            buckets[data[i] - min]++;
         }
 
         int p = 0;
-        for (int i = 0; i < bulks.length; ++i) {
-            for (int j = 0; j < bulks[i]; ++j) {
+        for (int i = 0; i < buckets.length; ++i) {
+            for (int j = 0; j < buckets[i]; ++j) {
                 data[p++] = i + min;
             }
         }
@@ -44,7 +44,7 @@ public class BucketSort {
 
         print(data);
 
-        bulkSort(data);
+        bucketSort(data);
 
         print(data);
     }
