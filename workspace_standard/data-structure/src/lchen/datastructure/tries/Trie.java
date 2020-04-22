@@ -1,6 +1,8 @@
 package lchen.datastructure.tries;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class Trie {
@@ -46,7 +48,38 @@ public class Trie {
     }
 
     public List<String> searchWords(String prefix) {
-        return null;
+        List<String> list = new ArrayList<String>();
+
+        char[] prefixArr = prefix.toCharArray();
+
+        Node cur = root;
+        for (int i = 0; i < prefixArr.length; ++i) {
+            if (!cur.children.containsKey(prefixArr[i])) {
+                return list;
+            }
+
+            cur = cur.children.get(prefixArr[i]);
+        }
+
+        searchWords(prefix, cur, list);
+
+        return list;
+    }
+
+    // This method assumes the node represents the last character in the prefix
+    private void searchWords(String prefix, Node node, List<String> list) {
+        if (node.isEndOfWord) {
+            list.add(prefix);
+        }
+
+        Iterator<Character> keyIter = node.children.keySet().iterator();
+        while (keyIter.hasNext()) {
+            Character key = keyIter.next();
+            String nextPrefix = prefix + key;
+            Node nextNode = node.children.get(key);
+
+            searchWords(nextPrefix, nextNode, list);
+        }
     }
 
     public void delete(String key) {
@@ -92,16 +125,41 @@ public class Trie {
         return root.children.size() == 0;
     }
 
-    public int size() {
+    public int numberOfWords() {
         return numberOfWords(root);
     }
 
     public int numberOfWords(String prefix) {
-        return 0;
+        char[] prefixArr = prefix.toCharArray();
+
+        Node cur = root;
+        for (int i = 0; i < prefixArr.length; ++i) {
+            if (!cur.children.containsKey(prefixArr[i])) {
+                return 0;
+            }
+
+            cur = cur.children.get(prefixArr[i]);
+        }
+
+        return numberOfWords(cur);
     }
 
     private int numberOfWords(Node node) {
-        return 0;
+        int count = 0;
+
+        if (node != null) {
+            if (node.isEndOfWord) {
+                count++;
+            }
+
+            Iterator<Node> childIter = node.children.values().iterator();
+            while (childIter.hasNext()) {
+                Node child = childIter.next();
+                count += numberOfWords(child);
+            }
+        }
+
+        return count;
     }
 
     public static class Node {
@@ -133,7 +191,31 @@ public class Trie {
             trie.insert(dict[i]);
         }
         System.out.println();
+        System.out.println("Total words: " + trie.numberOfWords());
         System.out.println("********** After insertions, the trie is empty: " + trie.isEmpty());
+
+        System.out.println();
+        System.out.println("Total words with the prefix 'a': " + trie.numberOfWords("a"));
+        List<String> list = trie.searchWords("a");
+        System.out.println("Words prefixed with 'a': " + list);
+
+        System.out.println("Total words with the prefix 'by': " + trie.numberOfWords("by"));
+        list = trie.searchWords("by");
+        System.out.println("Words prefixed with 'by': " + list);
+
+        System.out.println("Total words with the prefix 'c': " + trie.numberOfWords("c"));
+        list = trie.searchWords("c");
+        System.out.println("Words prefixed with 'c': " + list);
+
+        System.out.println("Total words with the prefix 'd': " + trie.numberOfWords("d"));
+        list = trie.searchWords("d");
+        System.out.println("Words prefixed with 'd': " + list);
+
+        System.out.println("Total words with the prefix 'th': " + trie.numberOfWords("th"));
+        list = trie.searchWords("th");
+        System.out.println("Words prefixed with 'th': " + list);
+
+        System.out.println("**********");
 
         System.out.println();
         for (int i = 0; i < keys.length; ++i) {
@@ -273,11 +355,16 @@ public class Trie {
             trie.insert(dict2[i]);
         }
         System.out.println("Total added: " + dict2.length);
-        System.out.println("Total words: " + trie.size());
+        System.out.println("Total words: " + trie.numberOfWords());
 
         System.out.println();
         for (int i = 0; i < keys.length; ++i) {
             System.out.println("Search for " + keys[i] + ": " + trie.search(keys[i]));
         }
+
+        System.out.println();
+        System.out.println("Total words with the prefix 'ma': " + trie.numberOfWords("ma"));
+        list = trie.searchWords("ma");
+        System.out.println("Words prefixed with 'ma': " + list);
     }
 }
