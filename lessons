@@ -1,0 +1,8 @@
+# Unit tests need mock up. If the mock up is on the lower level (such as istream::getLine()), the mock up will have 
+strong binding to the implementation as if "getLine()" is not called, the mock up will be broken. Better the mock up is on 
+the higher level API as APIs unlikely or intentionly to get changed. However, the code to be tested needs to be designed by 
+keeping the need of unit tests in mind.
+For example, instead of setting the internal member value "_mType" in "getType()", it can be "_mType = getType()" 
+so that "getType()" can be mocked up.
+
+# 
