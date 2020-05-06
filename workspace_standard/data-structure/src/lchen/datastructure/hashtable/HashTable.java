@@ -51,7 +51,7 @@ public class HashTable<K, V> {
         keySet.add(key);
         size++;
 
-        resize();
+        adjustCapacity();
 
         return preValue;
     }
@@ -103,7 +103,7 @@ public class HashTable<K, V> {
             size--;
         }
 
-        resize();
+        adjustCapacity();
 
         return preValue;
     }
@@ -202,8 +202,8 @@ public class HashTable<K, V> {
         return hash % capacity;
     }
 
-    // Initializes or doubles table size
-    private HashNode<K, V>[] resize() {
+    // Initializes or doubles table capacity
+    private HashNode<K, V>[] adjustCapacity() {
         int newCapacity = capacity;
         if (size < capacity * 0.7 /* && size > capacity * 0.2 */) {
             return table;
@@ -253,8 +253,8 @@ public class HashTable<K, V> {
         t.put("Slam", 77);
         t.put("Ron", 44);
 
-        // Before resize is triggered
-        System.out.println("Before resize");
+        // Before adjustCapacity is triggered
+        System.out.println("Before adjustCapacity");
         System.out.println("Size of table: " + t.size());
         System.out.println("Used capacity in table: " + t.usedCapacity());
         System.out.println("Is empty table: " + t.isEmpty());
@@ -277,8 +277,8 @@ public class HashTable<K, V> {
         t.put("Graham", 46);
         t.put("Lin", 32);
 
-        // After resize happened
-        System.out.println("After resize");
+        // After adjustCapacity happened
+        System.out.println("After adjustCapacity");
         System.out.println("Size of table: " + t.size());
         System.out.println("Used capacity in table: " + t.usedCapacity());
         System.out.println("Is empty table: " + t.isEmpty());
