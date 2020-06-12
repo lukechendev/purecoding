@@ -35,7 +35,7 @@ public class QuickSort {
         }
 
         int p = partition(data, lo, hi);
-        quickSort(data, lo, p);
+        quickSort(data, lo, p); // it's p inclusive because we return j in partition when j <= i and we go through i first and j later in partition.
         quickSort(data, p + 1, hi);
     }
 
