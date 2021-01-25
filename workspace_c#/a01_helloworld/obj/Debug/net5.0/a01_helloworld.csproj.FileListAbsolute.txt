@@ -1,0 +1,16 @@
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.csprojAssemblyReference.cache
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.GeneratedMSBuildEditorConfig.editorconfig
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.AssemblyInfoInputs.cache
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.AssemblyInfo.cs
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.csproj.CoreCompileInputs.cache
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/bin/Debug/net5.0/a01_helloworld
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/bin/Debug/net5.0/a01_helloworld.deps.json
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/bin/Debug/net5.0/a01_helloworld.runtimeconfig.json
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/bin/Debug/net5.0/a01_helloworld.runtimeconfig.dev.json
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/bin/Debug/net5.0/a01_helloworld.dll
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/bin/Debug/net5.0/ref/a01_helloworld.dll
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/bin/Debug/net5.0/a01_helloworld.pdb
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.dll
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/ref/a01_helloworld.dll
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.pdb
+/home/lchen154/git/purecoding/workspace_c#/a01_helloworld/obj/Debug/net5.0/a01_helloworld.genruntimeconfig.cache
