@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>a01_helloworld.HelloWorld2</StartupObject>
+    <StartupObject>a01_helloworld.HelloWorld3</StartupObject>
   </PropertyGroup>
 
 </Project>

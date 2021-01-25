@@ -32,4 +32,14 @@ namespace a01_helloworld
             return statements[rand.Next(3)];
         }
     }
+
+    class HelloWorld3 {
+        static void Main(string[] args)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            var title = new string("Start from here to future !");
+            Console.WriteLine("Here you go: {0}", title);
+        }
+    }
 }
