@@ -25,6 +25,9 @@ public class Solution1_1 {
 		freq.add(null);
 	}
 
+	/**
+	 * Time: O(1)
+	 */
 	public void increase(int k) {
 		if (min == 0) {
 			min = 1;
@@ -50,6 +53,9 @@ public class Solution1_1 {
 		}
 	}
 
+	/**
+	 * Time: O(n)
+	 */
 	public void decrease(int k) {
 		int v = map.getOrDefault(k, 0);
 		if (v == 0) {
@@ -67,7 +73,7 @@ public class Solution1_1 {
 		v--;
 		if (v == 0) {
 			map.remove(k);
-			
+
 			for (int i = 1; i < freq.size(); ++i) {
 				if (freq.get(i).size() > 0) {
 					min = i;
@@ -81,6 +87,9 @@ public class Solution1_1 {
 		freq.get(v).add(k);
 	}
 
+	/**
+	 * Time: O(1)
+	 */
 	public int getKeyWithMaxValue() {
 		if (freq.size() == 1) {
 			return -1;
@@ -88,6 +97,9 @@ public class Solution1_1 {
 		return freq.get(freq.size() - 1).iterator().next();
 	}
 
+	/**
+	 * Time: O(1)
+	 */
 	public int getKeyWithMinValue() {
 		if (min == 0) {
 			return -1;

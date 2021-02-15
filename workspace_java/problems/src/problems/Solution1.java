@@ -22,6 +22,9 @@ public class Solution1 {
 	// <v, k>
 	TreeMap<Integer, Set<Integer>> m2 = new TreeMap<>();
 
+	/**
+	 * Time: O(log(n))
+	 */
 	public void increase(int k) {
 		int v = m1.getOrDefault(k, 0);
 
@@ -40,6 +43,9 @@ public class Solution1 {
 		m2.put(v, newKeys);
 	}
 
+	/**
+	 * Time: O(log(n))
+	 */
 	public void decrease(int k) {
 		int v = m1.getOrDefault(k, 0);
 		if (v == 0) {
@@ -64,6 +70,9 @@ public class Solution1 {
 		m2.put(v, newKeys);
 	}
 
+	/**
+	 * Time: O(1)
+	 */
 	public int getKeyWithMaxValue() {
 		Map.Entry<Integer, Set<Integer>> last = m2.lastEntry();
 		if (last == null || last.getValue().size() == 0) {
@@ -73,6 +82,9 @@ public class Solution1 {
 		return last.getValue().iterator().next();
 	}
 
+	/**
+	 * Time: O(1)
+	 */
 	public int getKeyWithMinValue() {
 		Map.Entry<Integer, Set<Integer>> first = m2.firstEntry();
 		if (first == null || first.getValue().size() == 0) {
