@@ -6,13 +6,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class Test1 {
+class Test1_1 {
 
-	private Solution1 s;
+	private Solution1_1 s;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		s = new Solution1();
+		s = new Solution1_1();
 
 		s.increase(1);
 

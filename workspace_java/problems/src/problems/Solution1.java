@@ -29,14 +29,12 @@ public class Solution1 {
 			keys.remove(k);
 			if (keys.size() == 0) {
 				m2.remove(v);
-			} else {
-				m2.put(v, keys);
 			}
 		}
 
 		m1.put(k, ++v);
 
-		Set<Integer> newKeys = m2.getOrDefault(v, new HashSet<Integer>());
+		Set<Integer> newKeys = m2.getOrDefault(v, new HashSet<>());
 		newKeys.add(k);
 		m2.put(v, newKeys);
 	}
@@ -51,8 +49,6 @@ public class Solution1 {
 		keys.remove(k);
 		if (keys.size() == 0) {
 			m2.remove(v);
-		} else {
-			m2.put(v, keys);
 		}
 
 		if (--v == 0) {
@@ -62,7 +58,7 @@ public class Solution1 {
 
 		m1.put(k, v);
 
-		Set<Integer> newKeys = m2.getOrDefault(v, new HashSet<Integer>());
+		Set<Integer> newKeys = m2.getOrDefault(v, new HashSet<>());
 		newKeys.add(k);
 		m2.put(v, newKeys);
 	}
@@ -70,7 +66,7 @@ public class Solution1 {
 	public int getKeyWithMaxValue() {
 		Map.Entry<Integer, Set<Integer>> last = m2.lastEntry();
 		if (last == null || last.getValue().size() == 0) {
-			return 0;
+			return -1;
 		}
 
 		return last.getValue().iterator().next();
@@ -79,7 +75,7 @@ public class Solution1 {
 	public int getKeyWithMinValue() {
 		Map.Entry<Integer, Set<Integer>> first = m2.firstEntry();
 		if (first == null || first.getValue().size() == 0) {
-			return 0;
+			return -1;
 		}
 
 		return first.getValue().iterator().next();
