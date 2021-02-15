@@ -51,7 +51,7 @@ class Test1 {
 		assertEquals(1, s.getKeyWithMinValue());
 		
 		s.decrease(4);
-		s.increase(4);
+		s.decrease(4);
 		
 		assertEquals(2, s.getKeyWithMaxValue());
 		assertEquals(1, s.getKeyWithMinValue());
