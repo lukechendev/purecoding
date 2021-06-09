@@ -1,14 +1,14 @@
-To add a project:
+# To add a project:
 
-# Create a folder
+* Create a folder
 
-# add a CMakeLists.txt file
+* add a CMakeLists.txt file
 
-# add source code
+* add source code
 
-# create a build folder and go to the build folder
+* create a build folder and go to the build folder
 
-# Run "cmake .."
+* Run "cmake .."
 
-# Run "make"
+* Run "make"
 
