@@ -17,3 +17,13 @@ add_executable(
   mutex
   mutex.cpp
 )
+
+add_executable(
+  conditionVariable
+  conditionVariable.cpp
+)
+
+add_executable(
+  atomicCondition
+  atomicCondition.cpp
+)
