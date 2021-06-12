@@ -24,6 +24,11 @@ add_executable(
 )
 
 add_executable(
+  conditionVariable2
+  conditionVariable2.cpp
+)
+
+add_executable(
   atomicCondition
   atomicCondition.cpp
 )
