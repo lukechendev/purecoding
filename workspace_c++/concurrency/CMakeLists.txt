@@ -9,6 +9,26 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -pthread -lpthread -std=
 project(concurrency)
 
 add_executable(
+  sandbox
+  sandbox.cpp
+)
+
+add_executable(
+  sharedFuture
+  sharedFuture.cpp
+)
+
+add_executable(
+  promiseFutureSynchronise
+  promiseFutureSynchronise.cpp
+)
+
+add_executable(
+  promiseFutureException
+  promiseFutureException.cpp
+)
+
+add_executable(
   spinLock
   spinLock.cpp
 )
@@ -34,8 +54,33 @@ add_executable(
 )
 
 add_executable(
-  sandbox
-  sandbox.cpp
+  asyncLazy
+  asyncLazy.cpp
+)
+
+add_executable(
+  asyncLazy2
+  asyncLazy2.cpp
+)
+
+add_executable(
+  fireAndForgetFutures
+  fireAndForgetFutures.cpp
+)
+
+add_executable(
+  dotProductAsync
+  dotProductAsync.cpp
+)
+
+add_executable(
+  packagedTask
+  packagedTask.cpp
+)
+
+add_executable(
+  promiseFuture
+  promiseFuture.cpp
 )
 
 add_executable(
