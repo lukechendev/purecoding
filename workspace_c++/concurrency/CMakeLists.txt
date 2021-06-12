@@ -29,6 +29,16 @@ add_executable(
 )
 
 add_executable(
+  asyncVersusThread
+  asyncVersusThread.cpp
+)
+
+add_executable(
+  sandbox
+  sandbox.cpp
+)
+
+add_executable(
   atomicCondition
   atomicCondition.cpp
 )

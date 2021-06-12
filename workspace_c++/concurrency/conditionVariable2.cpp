@@ -16,7 +16,8 @@ void doTheWork(){
 }
 
 void waitingForWork(){
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    std::cout << "Worker: Start." << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << "Worker: Waiting for work." << std::endl;
     std::unique_lock<std::mutex> lck(mutex_);
     condVar.wait(lck, []{ return dataReady; });
@@ -29,9 +30,10 @@ void setDataReady(){
     {
       std::lock_guard<std::mutex> lck(mutex_);
       std::cout << "pending data ready" << std::endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds(7000));
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       dataReady = true;
       std::cout << "Sender: Data is ready."  << std::endl;
+      // better std::cout << "Sender: Data is ready.\n";
     }
     // condVar.notify_one();
     std::cout << "Sender: notified."  << std::endl;
@@ -44,9 +46,12 @@ int main(){
   std::thread t1(waitingForWork);
   std::thread t2(setDataReady);
 
+  std::cout << "Main: to join t1."  << std::endl;
   t1.join();
+  std::cout << "Main: t1 joined."  << std::endl;
+  std::cout << "Main: to join t2."  << std::endl;
   t2.join();
+  std::cout << "Main: t2 joined."  << std::endl;
 
-  std::cout << std::endl;
-
+  std::cout << "Main: end" << std::endl;
 }
