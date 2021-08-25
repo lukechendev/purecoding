@@ -62,3 +62,7 @@ build
 hs_err_pid*
 .vscode
 /.metadata/
+
+# macos
+.DS_Store
+
