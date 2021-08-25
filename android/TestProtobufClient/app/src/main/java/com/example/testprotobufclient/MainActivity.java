@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private static String PROTO_DATA_PATH;
 
     private List<Person> contacts = new ArrayList<Person>();
+
+    private ListView lvContacts;
     private ContactAdapter adtContact;
 
     @Override
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         adtContact = new ContactAdapter(this, contacts);
-        ListView lvContacts = findViewById(R.id.listViewContacts);
+        lvContacts = findViewById(R.id.listViewContacts);
         lvContacts.setAdapter(adtContact);
 
         initProtobuf();
@@ -78,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
             contacts.clear();
             contacts.addAll(addressBook.getPeopleList());
 
+            // Update UI
             adtContact.notifyDataSetInvalidated();
+            scrollListViewToBottom();
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -87,5 +92,14 @@ public class MainActivity extends AppCompatActivity {
             } catch (Throwable ignore) {
             }
         }
+    }
+
+    private void scrollListViewToBottom() {
+        lvContacts.post(new Runnable() {
+            @Override
+            public void run() {
+                lvContacts.setSelection(lvContacts.getCount() - 1);
+            }
+        });
     }
 }
