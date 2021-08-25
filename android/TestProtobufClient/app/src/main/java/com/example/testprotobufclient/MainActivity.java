@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "TestProtobuf";
+    private static final String TAG = "TestProtobufClient";
 
     private final static String PROTO_DATA_NAME = "address_book.proto.data";
     private static String PROTO_DATA_PATH;
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // PROTO_DATA_PATH = getFilesDir() + "/" + PROTO_DATA_NAME;
 
         // Option 2: SDCard for sharing
+        // /storage/emulated/0/protos/address_book.proto.data
         File sdCard = Environment.getExternalStorageDirectory();
         File dir = new File(sdCard.getAbsolutePath() + "/protos");
         dir.mkdirs();
