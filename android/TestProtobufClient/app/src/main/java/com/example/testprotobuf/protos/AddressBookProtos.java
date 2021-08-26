@@ -39,17 +39,17 @@ public final class AddressBookProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\021addressbook.proto\022\014testprotobuf\032\037googl" +
-      "e/protobuf/timestamp.proto\"\217\002\n\006Person\022\014\n" +
-      "\004name\030\001 \001(\t\022\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\0220" +
-      "\n\006phones\030\004 \003(\0132 .testprotobuf.Person.Pho" +
-      "neNumber\0220\n\014last_updated\030\005 \001(\0132\032.google." +
-      "protobuf.Timestamp\032K\n\013PhoneNumber\022\016\n\006num" +
-      "ber\030\001 \001(\t\022,\n\004type\030\002 \001(\0162\036.testprotobuf.P" +
-      "erson.PhoneType\"+\n\tPhoneType\022\n\n\006MOBILE\020\000" +
-      "\022\010\n\004HOME\020\001\022\010\n\004WORK\020\002\"3\n\013AddressBook\022$\n\006p" +
-      "eople\030\001 \003(\0132\024.testprotobuf.PersonB6\n\037com" +
-      ".example.testprotobuf.protosB\021AddressBoo" +
-      "kProtosP\001b\006proto3"
+      "e/protobuf/timestamp.proto\"\200\002\n\006Person\022\014\n" +
+      "\004name\030\001 \001(\t\022\n\n\002id\030\002 \001(\005\0220\n\006phones\030\004 \003(\0132" +
+      " .testprotobuf.Person.PhoneNumber\0220\n\014las" +
+      "t_updated\030\005 \001(\0132\032.google.protobuf.Timest" +
+      "amp\032K\n\013PhoneNumber\022\016\n\006number\030\001 \001(\t\022,\n\004ty" +
+      "pe\030\002 \001(\0162\036.testprotobuf.Person.PhoneType" +
+      "\"+\n\tPhoneType\022\n\n\006MOBILE\020\000\022\010\n\004HOME\020\001\022\010\n\004W" +
+      "ORK\020\002\"3\n\013AddressBook\022$\n\006people\030\001 \003(\0132\024.t" +
+      "estprotobuf.PersonB6\n\037com.example.testpr" +
+      "otobuf.protosB\021AddressBookProtosP\001b\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -61,7 +61,7 @@ public final class AddressBookProtos {
     internal_static_testprotobuf_Person_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_testprotobuf_Person_descriptor,
-        new java.lang.String[] { "Name", "Id", "Email", "Phones", "LastUpdated", });
+        new java.lang.String[] { "Name", "Id", "Phones", "LastUpdated", });
     internal_static_testprotobuf_Person_PhoneNumber_descriptor =
       internal_static_testprotobuf_Person_descriptor.getNestedTypes().get(0);
     internal_static_testprotobuf_Person_PhoneNumber_fieldAccessorTable = new

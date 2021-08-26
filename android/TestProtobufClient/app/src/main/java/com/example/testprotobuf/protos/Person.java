@@ -21,7 +21,6 @@ private static final long serialVersionUID = 0L;
   }
   private Person() {
     name_ = "";
-    email_ = "";
     phones_ = java.util.Collections.emptyList();
   }
 
@@ -65,12 +64,6 @@ private static final long serialVersionUID = 0L;
           case 16: {
 
             id_ = input.readInt32();
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            email_ = s;
             break;
           }
           case 34: {
@@ -975,44 +968,6 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int EMAIL_FIELD_NUMBER = 3;
-  private volatile java.lang.Object email_;
-  /**
-   * <code>string email = 3;</code>
-   * @return The email.
-   */
-  @java.lang.Override
-  public java.lang.String getEmail() {
-    java.lang.Object ref = email_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      email_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string email = 3;</code>
-   * @return The bytes for email.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getEmailBytes() {
-    java.lang.Object ref = email_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      email_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int PHONES_FIELD_NUMBER = 4;
   private java.util.List<com.example.testprotobuf.protos.Person.PhoneNumber> phones_;
   /**
@@ -1099,9 +1054,6 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       output.writeInt32(2, id_);
     }
-    if (!getEmailBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, email_);
-    }
     for (int i = 0; i < phones_.size(); i++) {
       output.writeMessage(4, phones_.get(i));
     }
@@ -1123,9 +1075,6 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, id_);
-    }
-    if (!getEmailBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, email_);
     }
     for (int i = 0; i < phones_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
@@ -1154,8 +1103,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getName())) return false;
     if (getId()
         != other.getId()) return false;
-    if (!getEmail()
-        .equals(other.getEmail())) return false;
     if (!getPhonesList()
         .equals(other.getPhonesList())) return false;
     if (hasLastUpdated() != other.hasLastUpdated()) return false;
@@ -1178,8 +1125,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
-    hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-    hash = (53 * hash) + getEmail().hashCode();
     if (getPhonesCount() > 0) {
       hash = (37 * hash) + PHONES_FIELD_NUMBER;
       hash = (53 * hash) + getPhonesList().hashCode();
@@ -1330,8 +1275,6 @@ private static final long serialVersionUID = 0L;
 
       id_ = 0;
 
-      email_ = "";
-
       if (phonesBuilder_ == null) {
         phones_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -1373,7 +1316,6 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       result.name_ = name_;
       result.id_ = id_;
-      result.email_ = email_;
       if (phonesBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           phones_ = java.util.Collections.unmodifiableList(phones_);
@@ -1442,10 +1384,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getId() != 0) {
         setId(other.getId());
-      }
-      if (!other.getEmail().isEmpty()) {
-        email_ = other.email_;
-        onChanged();
       }
       if (phonesBuilder_ == null) {
         if (!other.phones_.isEmpty()) {
@@ -1621,82 +1559,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearId() {
       
       id_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object email_ = "";
-    /**
-     * <code>string email = 3;</code>
-     * @return The email.
-     */
-    public java.lang.String getEmail() {
-      java.lang.Object ref = email_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        email_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string email = 3;</code>
-     * @return The bytes for email.
-     */
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
-      java.lang.Object ref = email_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        email_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string email = 3;</code>
-     * @param value The email to set.
-     * @return This builder for chaining.
-     */
-    public Builder setEmail(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      email_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string email = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearEmail() {
-      
-      email_ = getDefaultInstance().getEmail();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string email = 3;</code>
-     * @param value The bytes for email to set.
-     * @return This builder for chaining.
-     */
-    public Builder setEmailBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      email_ = value;
       onChanged();
       return this;
     }
