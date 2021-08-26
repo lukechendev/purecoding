@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         Person.Builder person = Person.newBuilder();
 
         person.setId(rand.nextInt());
-        person.setName(name);
+        person.setName(Integer.valueOf(name));
         person.setEmail(email);
 
         return person.build();

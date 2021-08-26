@@ -20,7 +20,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Person() {
-    name_ = "";
     email_ = "";
     phones_ = java.util.Collections.emptyList();
   }
@@ -56,10 +55,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            name_ = s;
+            name_ = input.readInt32();
             break;
           }
           case 16: {
@@ -923,41 +921,14 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int NAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object name_;
+  private int name_;
   /**
-   * <code>string name = 1;</code>
+   * <code>int32 name = 1;</code>
    * @return The name.
    */
   @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      name_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string name = 1;</code>
-   * @return The bytes for name.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getName() {
+    return name_;
   }
 
   public static final int ID_FIELD_NUMBER = 2;
@@ -1093,8 +1064,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+    if (name_ != 0) {
+      output.writeInt32(1, name_);
     }
     if (id_ != 0) {
       output.writeInt32(2, id_);
@@ -1117,8 +1088,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+    if (name_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, name_);
     }
     if (id_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -1150,8 +1122,8 @@ private static final long serialVersionUID = 0L;
     }
     com.example.testprotobuf.protos.Person other = (com.example.testprotobuf.protos.Person) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
+    if (getName()
+        != other.getName()) return false;
     if (getId()
         != other.getId()) return false;
     if (!getEmail()
@@ -1175,7 +1147,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
+    hash = (53 * hash) + getName();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
     hash = (37 * hash) + EMAIL_FIELD_NUMBER;
@@ -1326,7 +1298,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      name_ = "";
+      name_ = 0;
 
       id_ = 0;
 
@@ -1436,9 +1408,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.example.testprotobuf.protos.Person other) {
       if (other == com.example.testprotobuf.protos.Person.getDefaultInstance()) return this;
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        onChanged();
+      if (other.getName() != 0) {
+        setName(other.getName());
       }
       if (other.getId() != 0) {
         setId(other.getId());
@@ -1506,78 +1477,33 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.lang.Object name_ = "";
+    private int name_ ;
     /**
-     * <code>string name = 1;</code>
+     * <code>int32 name = 1;</code>
      * @return The name.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public int getName() {
+      return name_;
     }
     /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string name = 1;</code>
+     * <code>int32 name = 1;</code>
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setName(int value) {
+      
       name_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>int32 name = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearName() {
       
-      name_ = getDefaultInstance().getName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      name_ = value;
+      name_ = 0;
       onChanged();
       return this;
     }
