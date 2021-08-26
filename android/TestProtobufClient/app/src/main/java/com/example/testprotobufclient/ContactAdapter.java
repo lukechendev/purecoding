@@ -27,9 +27,11 @@ public class ContactAdapter extends ArrayAdapter<Person> {
         // Lookup view for data population
         TextView tvName = (TextView) convertView.findViewById(R.id.textViewName);
         TextView tvEmail = (TextView) convertView.findViewById(R.id.textViewEmail);
+        TextView tvAge = (TextView) convertView.findViewById(R.id.textViewAge);
         // Populate the data into the template view using the data object
         tvName.setText(contact.getName());
         tvEmail.setText(contact.getEmail());
+        tvAge.setText(String.valueOf(contact.getAge()));
         // Return the completed view to render on screen
         return convertView;
     }

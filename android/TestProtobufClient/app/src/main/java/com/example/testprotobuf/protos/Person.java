@@ -95,6 +95,11 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 48: {
+
+            age_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -1079,6 +1084,17 @@ private static final long serialVersionUID = 0L;
     return getLastUpdated();
   }
 
+  public static final int AGE_FIELD_NUMBER = 6;
+  private int age_;
+  /**
+   * <code>int32 age = 6;</code>
+   * @return The age.
+   */
+  @java.lang.Override
+  public int getAge() {
+    return age_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -1108,6 +1124,9 @@ private static final long serialVersionUID = 0L;
     if (lastUpdated_ != null) {
       output.writeMessage(5, getLastUpdated());
     }
+    if (age_ != 0) {
+      output.writeInt32(6, age_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -1134,6 +1153,10 @@ private static final long serialVersionUID = 0L;
     if (lastUpdated_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getLastUpdated());
+    }
+    if (age_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(6, age_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -1163,6 +1186,8 @@ private static final long serialVersionUID = 0L;
       if (!getLastUpdated()
           .equals(other.getLastUpdated())) return false;
     }
+    if (getAge()
+        != other.getAge()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -1188,6 +1213,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + LAST_UPDATED_FIELD_NUMBER;
       hash = (53 * hash) + getLastUpdated().hashCode();
     }
+    hash = (37 * hash) + AGE_FIELD_NUMBER;
+    hash = (53 * hash) + getAge();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1344,6 +1371,8 @@ private static final long serialVersionUID = 0L;
         lastUpdated_ = null;
         lastUpdatedBuilder_ = null;
       }
+      age_ = 0;
+
       return this;
     }
 
@@ -1388,6 +1417,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.lastUpdated_ = lastUpdatedBuilder_.build();
       }
+      result.age_ = age_;
       onBuilt();
       return result;
     }
@@ -1475,6 +1505,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasLastUpdated()) {
         mergeLastUpdated(other.getLastUpdated());
+      }
+      if (other.getAge() != 0) {
+        setAge(other.getAge());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -2058,6 +2091,37 @@ private static final long serialVersionUID = 0L;
         lastUpdated_ = null;
       }
       return lastUpdatedBuilder_;
+    }
+
+    private int age_ ;
+    /**
+     * <code>int32 age = 6;</code>
+     * @return The age.
+     */
+    @java.lang.Override
+    public int getAge() {
+      return age_;
+    }
+    /**
+     * <code>int32 age = 6;</code>
+     * @param value The age to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAge(int value) {
+      
+      age_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 age = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAge() {
+      
+      age_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
