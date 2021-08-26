@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText mName;
     private EditText mEmail;
+    private EditText mAge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
         mName = findViewById(R.id.editTextTextPersonName);
         mEmail = findViewById(R.id.editTextTextEmailAddress);
+        mAge = findViewById(R.id.editTextAge);
 
         Button btnAdd = findViewById(R.id.buttonAddContact);
         btnAdd.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                addContact(mName.getText().toString(), mEmail.getText().toString());
+                addContact(mName.getText().toString(),
+                        mEmail.getText().toString(),
+                        Integer.valueOf(mAge.getText().toString()));
             }
         });
     }
@@ -66,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "Proto data file path: " + PROTO_DATA_PATH);
     }
 
-    private void addContact(String name, String email) {
+    private void addContact(String name, String email, int age) {
         AddressBook.Builder addressBook = AddressBook.newBuilder();
 
         // Read the existing address book.
@@ -89,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Add an address.
         try {
-            addressBook.addPeople(buildPeople(name, email));
+            addressBook.addPeople(buildPeople(name, email, age));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -117,12 +121,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    static private Person buildPeople(String name, String email) throws IOException {
+    static private Person buildPeople(String name, String email, int age) throws IOException {
         Person.Builder person = Person.newBuilder();
 
         person.setId(rand.nextInt());
         person.setName(name);
         person.setEmail(email);
+        person.setAge(age);
 
         return person.build();
     }

@@ -79,4 +79,10 @@ public interface PersonOrBuilder extends
    * <code>.google.protobuf.Timestamp last_updated = 5;</code>
    */
   com.google.protobuf.TimestampOrBuilder getLastUpdatedOrBuilder();
+
+  /**
+   * <code>int32 age = 6;</code>
+   * @return The age.
+   */
+  int getAge();
 }
