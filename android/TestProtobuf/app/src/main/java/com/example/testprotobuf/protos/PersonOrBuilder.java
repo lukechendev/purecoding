@@ -30,18 +30,6 @@ public interface PersonOrBuilder extends
   int getId();
 
   /**
-   * <code>string email = 3;</code>
-   * @return The email.
-   */
-  java.lang.String getEmail();
-  /**
-   * <code>string email = 3;</code>
-   * @return The bytes for email.
-   */
-  com.google.protobuf.ByteString
-      getEmailBytes();
-
-  /**
    * <code>repeated .testprotobuf.Person.PhoneNumber phones = 4;</code>
    */
   java.util.List<com.example.testprotobuf.protos.Person.PhoneNumber> 

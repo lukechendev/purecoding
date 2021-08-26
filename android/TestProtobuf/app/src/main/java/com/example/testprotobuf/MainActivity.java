@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         person.setId(rand.nextInt());
         person.setName(name);
-        person.setEmail(email);
+//        person.setEmail(email);
 
         return person.build();
     }
