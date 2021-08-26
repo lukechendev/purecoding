@@ -28,7 +28,7 @@ public class ContactAdapter extends ArrayAdapter<Person> {
         TextView tvName = (TextView) convertView.findViewById(R.id.textViewName);
         TextView tvEmail = (TextView) convertView.findViewById(R.id.textViewEmail);
         // Populate the data into the template view using the data object
-        tvName.setText(contact.getName());
+        tvName.setText(String.valueOf(contact.getName()));
         tvEmail.setText(contact.getEmail());
         // Return the completed view to render on screen
         return convertView;

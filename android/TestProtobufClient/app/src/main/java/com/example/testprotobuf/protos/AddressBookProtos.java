@@ -40,7 +40,7 @@ public final class AddressBookProtos {
     java.lang.String[] descriptorData = {
       "\n\021addressbook.proto\022\014testprotobuf\032\037googl" +
       "e/protobuf/timestamp.proto\"\217\002\n\006Person\022\014\n" +
-      "\004name\030\001 \001(\t\022\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\0220" +
+      "\004name\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\0220" +
       "\n\006phones\030\004 \003(\0132 .testprotobuf.Person.Pho" +
       "neNumber\0220\n\014last_updated\030\005 \001(\0132\032.google." +
       "protobuf.Timestamp\032K\n\013PhoneNumber\022\016\n\006num" +

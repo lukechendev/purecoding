@@ -21,7 +21,7 @@ option java_outer_classname = "AddressBookProtos";
 
 // [START messages]
 message Person {
-  string name = 1;
+  int32 name = 1;
   int32 id = 2;  // Unique ID number for this person.
   string email = 3;
 
