@@ -1,0 +1,75 @@
+// https://leetcode.com/problems/detect-squares/
+// Passed O(n) - clearer idea by seeking the diagonal point first
+
+class DetectSquares {
+
+    private List<Point> pList = new ArrayList<Point>();
+    private Map<Point, List<Point>> xyMap = new HashMap<Point, List<Point>>();
+
+    public DetectSquares() {
+    }
+
+    public void add(int[] point) {
+        Point pKey = new Point(point[0], point[1]);
+        pList.add(pKey);
+
+        List<Point> list = xyMap.getOrDefault(pKey, new ArrayList<Point>());
+        list.add(pKey);
+        xyMap.put(pKey, list);
+    }
+
+    public int count(int[] point) {
+        int count = 0;
+
+        Point pKey = new Point(point[0], point[1]);
+        for (Point pDiag : pList) {
+            if (pDiag.x == pKey.x && pDiag.y == pKey.y) {
+                continue;
+            }
+
+            if (Math.abs(pDiag.x - pKey.x) != Math.abs(pDiag.y - pKey.y)) {
+                continue;
+            }
+
+            Point pLeft = new Point(pDiag.x, pKey.y);
+            Point pRight = new Point(pKey.x, pDiag.y);
+
+            if (xyMap.containsKey(pLeft) && xyMap.containsKey(pRight)) {
+                count += xyMap.get(pLeft).size() * xyMap.get(pRight).size();
+            }
+        }
+
+        return count;
+    }
+}
+
+class Point {
+    int x = 0;
+    int y = 0;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Point && ((Point) obj).x == this.x && ((Point) obj).y == this.y);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + x;
+        hash = 71 * hash + y;
+
+        return hash;
+    }
+}
+
+/**
+ * Your DetectSquares object will be instantiated and called as such:
+ * DetectSquares obj = new DetectSquares();
+ * obj.add(point);
+ * int param_2 = obj.count(point);
+ */

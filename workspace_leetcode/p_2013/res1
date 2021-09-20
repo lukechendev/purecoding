@@ -1,0 +1,97 @@
+// https://leetcode.com/problems/detect-squares/
+// TLE (Time Limit Exceeded)
+
+class DetectSquares {
+
+    private Map<Integer, List<int[]>> xMap = new HashMap<Integer, List<int[]>>();
+    private Map<Integer, List<int[]>> yMap = new HashMap<Integer, List<int[]>>();
+    private Map<Point, Integer> xyMap = new HashMap<Point, Integer>();
+
+    public DetectSquares() {
+    }
+
+    public void add(int[] point) {
+        List<int[]> list = xMap.getOrDefault(point[0], new ArrayList<int[]>());
+        list.add(point);
+        xMap.put(point[0], list);
+
+        list = yMap.getOrDefault(point[1], new ArrayList<int[]>());
+        list.add(point);
+        yMap.put(point[1], list);
+
+        Point cur = new Point(point[0], point[1]);
+        xyMap.put(cur, xyMap.getOrDefault(cur, 0) + 1);
+    }
+
+    public int count(int[] point) {
+        List<int[]> xList = xMap.get(point[0]);
+        if (xList == null || xList.size() == 0) {
+            return 0;
+        }
+
+        List<int[]> yList = yMap.get(point[1]);
+        if (yList == null || yList.size() == 0) {
+            return 0;
+        }
+
+        int count = 0;
+        for (int[] xPoint : xList) {
+            for (int[] yPoint : yList) {
+                int[] checkPoint = {yPoint[0], xPoint[1]};
+
+                if (isValid(point, xPoint, yPoint, checkPoint)) {
+                    count += xyMap.getOrDefault(new Point(checkPoint[0], checkPoint[1]), 0);
+                }
+            }
+        }
+
+        return count;
+    }
+
+    /**
+     * Check the squire of:
+     * p3-----p1
+     * |      |
+     * |      |
+     * |      |
+     * p4-----p2
+     */
+    private boolean isValid(int[] p1, int[] p2, int[] p3, int[] p4) {
+        if (p2[0] == p3[0] && p2[1] == p3[1]) {
+            return false;
+        }
+
+        return Math.abs(p1[0] - p3[0]) == Math.abs(p1[1] - p2[1]);
+    }
+}
+
+class Point {
+    int x = 0;
+    int y = 0;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Point && ((Point) obj).x == this.x && ((Point) obj).y == this.y);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + x;
+        hash = 71 * hash + y;
+
+        return hash;
+    }
+}
+
+/**
+ * Your DetectSquares object will be instantiated and called as such:
+ * DetectSquares obj = new DetectSquares();
+ * obj.add(point);
+ * int param_2 = obj.count(point);
+ */

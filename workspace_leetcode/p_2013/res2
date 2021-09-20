@@ -1,0 +1,95 @@
+// https://leetcode.com/problems/detect-squares/
+// Passed O(n)
+
+class DetectSquares {
+
+    private Map<Integer, List<int[]>> xMap = new HashMap<Integer, List<int[]>>();
+    private Map<Point, List<int[]>> xyMap = new HashMap<Point, List<int[]>>();
+
+    public DetectSquares() {
+    }
+
+    public void add(int[] point) {
+        List<int[]> list = xMap.getOrDefault(point[0], new ArrayList<int[]>());
+        list.add(point);
+        xMap.put(point[0], list);
+
+        Point pKey = new Point(point[0], point[1]);
+        list = xyMap.getOrDefault(pKey, new ArrayList<int[]>());
+        list.add(point);
+        xyMap.put(pKey, list);
+    }
+
+    public int count(int[] point) {
+        List<int[]> xList = xMap.get(point[0]);
+        if (xList == null || xList.isEmpty()) {
+            return 0;
+        }
+
+        int count = 0;
+        for (int[] xPoint : xList) {
+            if (xPoint[0] == point[0] && xPoint[1] == point[1]) {
+                continue;
+            }
+
+            int edgeLen = Math.abs(point[1] - xPoint[1]);
+
+            int[] yPoint1 = {point[0] - edgeLen, point[1]};
+            List<int[]> yList = xyMap.get(new Point(yPoint1[0], yPoint1[1]));
+            if (yList != null && !yList.isEmpty()) {
+
+                int[] zPoint = {yPoint1[0], xPoint[1]};
+                List<int[]> zList = xyMap.get(new Point(zPoint[0], zPoint[1]));
+                if (zList != null && !zList.isEmpty()) {
+
+                    count += yList.size() * zList.size();
+                }
+            }
+
+            int[] yPoint2 = {point[0] + edgeLen, point[1]};
+            yList = xyMap.get(new Point(yPoint2[0], yPoint2[1]));
+            if (yList != null && !yList.isEmpty()) {
+
+                int[] zPoint = {yPoint2[0], xPoint[1]};
+                List<int[]> zList = xyMap.get(new Point(zPoint[0], zPoint[1]));
+                if (zList != null && !zList.isEmpty()) {
+
+                    count += yList.size() * zList.size();
+                }
+            }
+        }
+
+        return count;
+    }
+}
+
+class Point {
+    int x = 0;
+    int y = 0;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Point && ((Point) obj).x == this.x && ((Point) obj).y == this.y);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + x;
+        hash = 71 * hash + y;
+
+        return hash;
+    }
+}
+
+/**
+ * Your DetectSquares object will be instantiated and called as such:
+ * DetectSquares obj = new DetectSquares();
+ * obj.add(point);
+ * int param_2 = obj.count(point);
+ */
