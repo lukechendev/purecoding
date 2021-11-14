@@ -1,0 +1,28 @@
+// https://leetcode.com/problems/grid-game/
+// Time Limit Exceeded
+
+class Solution {
+    public long gridGame(int[][] grid) {
+        int n = grid[0].length;
+
+        long minMax = findMax(grid, 0);
+        for (int i = 1; i < n; ++i) {
+            minMax = Math.min(minMax, findMax(grid, i));
+        }
+
+        return minMax;
+    }
+
+    private long findMax(int[][] grid, int t) {
+        int n = grid[0].length;
+
+        int sum1 = 0;
+        int sum2 = 0;
+        for (int i = 0; i < n; ++i) {
+            sum1 += i > t ? grid[0][i] : 0;
+            sum2 += i < t ? grid[1][i] : 0;
+        }
+
+        return Math.max(sum1, sum2);
+    }
+}
