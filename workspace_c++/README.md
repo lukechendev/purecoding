@@ -8,6 +8,7 @@
 
 # Option 1
 * run "cmake -S . -B build"
+* run "make -C build"
 
 # Option 2
 * create a build folder and go to the build folder
