@@ -7,15 +7,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
     src/Car.cpp
+    src/CarPropertyManager.cpp
     src/main.cpp
 )
 
 set(HEADERS
     include/Car.h
+    include/CarPropertyManager.h
 )
 
 add_executable(car ${SOURCES})
 
-target_include_directories(car PUBLIC
+target_include_directories(car PRIVATE
     ${HEADERS}
 )
