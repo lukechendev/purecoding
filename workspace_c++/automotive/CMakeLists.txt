@@ -2,18 +2,20 @@ cmake_minimum_required(VERSION 3.5)
 
 project(automotive VERSION 1.0 LANGUAGES CXX)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
-    src/Car.cpp
-    src/CarPropertyManager.cpp
+    src/car.cpp
+    src/carpropertymanager.cpp
     src/main.cpp
 )
 
 set(HEADERS
-    include/Car.h
-    include/CarPropertyManager.h
+    include/car.h
+    include/carpropertymanager.h
 )
 
 add_executable(

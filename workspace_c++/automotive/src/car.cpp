@@ -4,8 +4,6 @@
 
 using namespace std;
 
-int main()
-{
-    Car car = Car();
-    return 0;
+Car::Car() {
+    cout << "Car constructor" << endl;
 }
