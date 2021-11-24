@@ -9,12 +9,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
     src/car.cpp
+    src/carmanagerbase.cpp
     src/carpropertymanager.cpp
     src/main.cpp
 )
 
 set(HEADERS
     include/car.h
+    include/carmanagerbase.h
     include/carpropertymanager.h
 )
 
