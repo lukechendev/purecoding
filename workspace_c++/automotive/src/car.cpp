@@ -10,12 +10,18 @@ Car::Car() {
     cout << "Car constructor" << endl;
 }
 
-CarManagerBase* Car::getCarManager(CarService service) {
-    switch(service) {
-        case CarService::Property: {
+CarManagerBase* Car::getCarManager(CarManagerType type) {
+    switch (type) {
+        case CarManagerType::Property: {
             return new CarPropertyManager();
         }
-        case CarService::Navigation: {
+        case CarManagerType::Navigation: {
+            return nullptr;
+        }
+        case CarManagerType::Audio: {
+            return nullptr;
+        }
+        case CarManagerType::Bluetooth: {
             return nullptr;
         }
         default: {

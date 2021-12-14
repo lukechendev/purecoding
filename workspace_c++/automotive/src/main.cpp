@@ -8,7 +8,9 @@ using namespace std;
 int main()
 {
     Car car = Car();
-    CarPropertyManager* propertyManager = (CarPropertyManager*) car.getCarManager(CarService::Property);
-    delete propertyManager;
+    CarPropertyManager* propManager = (CarPropertyManager*) car.getCarManager(CarManagerType::Property);
+
+    delete propManager;
     return 0;
 }
+

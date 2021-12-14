@@ -11,6 +11,8 @@ set(SOURCES
     src/car.cpp
     src/carmanagerbase.cpp
     src/carpropertymanager.cpp
+    src/carpropertyvalue.cpp
+    src/carservice.cpp
     src/main.cpp
 )
 
@@ -18,6 +20,9 @@ set(HEADERS
     include/car.h
     include/carmanagerbase.h
     include/carpropertymanager.h
+    include/carpropertyvalue.h
+    include/carservice.h
+    include/carpropertyids.h
 )
 
 add_executable(

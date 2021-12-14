@@ -5,5 +5,5 @@
 using namespace std;
 
 CarManagerBase::CarManagerBase() {
-    cout << "CarManagerBase" << endl;
+    cout << "CarManagerBase constructor" << endl;
 }

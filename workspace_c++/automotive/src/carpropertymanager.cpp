@@ -5,5 +5,5 @@
 using namespace std;
 
 CarPropertyManager::CarPropertyManager() : CarManagerBase() {
-    cout << "CarPropertyManager" << endl;
+    cout << "CarPropertyManager constructor" << endl;
 }

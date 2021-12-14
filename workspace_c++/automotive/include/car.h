@@ -3,9 +3,7 @@
 
 #include "carmanagerbase.h"
 
-using namespace std;
-
-enum class CarService {
+enum class CarManagerType {
     Property,
     Audio,
     Bluetooth,
@@ -15,7 +13,7 @@ enum class CarService {
 class Car {
 public:
     Car();
-    CarManagerBase* getCarManager(CarService service);
+    CarManagerBase* getCarManager(CarManagerType type);
 };
 
 #endif // CAR_H
