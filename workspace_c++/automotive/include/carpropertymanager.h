@@ -8,7 +8,7 @@
 class CarPropertyManager : public CarManagerBase {
 public:
     CarPropertyValue getProperty(const int propId) const;
-    void setProperty(const CarPropertyValue propValue);
+    void setProperty(const CarPropertyValue prop);
 
 private:
     CarPropertyManager();
