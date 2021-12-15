@@ -35,7 +35,7 @@ void CarService::setProperty(const int propId, const int propValue) {
 }
 
 void CarService::fetchProperties() {
-    for (const auto prop : CarPropertyIds::ALL) {
+    for (const auto& prop : CarPropertyIds::ALL) {
         auto propId = prop.first;
 
         // TODO remotely fetch from CANService

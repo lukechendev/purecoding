@@ -12,7 +12,7 @@ int main()
     CarPropertyManager* propManager = (CarPropertyManager*) car.getCarManager(CarManagerType::Property);
 
     cout << "**************************" << endl;
-    for (auto prop : CarPropertyIds::ALL) {
+    for (const auto& prop : CarPropertyIds::ALL) {
         auto propId = prop.first;
         auto propStr = prop.second;
         auto propValue = propManager->getProperty(propId).getValue();
