@@ -2,6 +2,7 @@
 
 #include "include/carservice.h"
 #include "include/carpropertyvalue.h"
+#include "include/carpropertyids.h"
 
 CarService::CarService() {
     cout << "CarService constructor" << endl;
