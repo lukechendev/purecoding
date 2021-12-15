@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 
 #include "include/carservice.h"
 #include "include/carpropertyvalue.h"
@@ -34,6 +35,16 @@ void CarService::setProperty(const int propId, const int propValue) {
 }
 
 void CarService::fetchProperties() {
-    setProperty(1, 1);
-    setProperty(1, 2);
+    // TODO remote call from CANService
+    for (const auto prop : CarPropertyIds::ALL) {
+        auto propId = prop.first;
+        auto propStr = prop.second;
+
+        std::random_device generator;
+        std::mt19937 mt(generator());
+        std:uniform_int_distribution<int> distribution(1, 100);
+        int propValue = distribution(mt);
+        props.emplace(propId, CarPropertyValue(propId, propValue));
+        cout << "CarService fetch prop " << propStr << "=" << props.at(propId).getValue() << endl;
+    }
 }

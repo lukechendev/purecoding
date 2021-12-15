@@ -13,6 +13,7 @@ set(SOURCES
     src/carpropertymanager.cpp
     src/carpropertyvalue.cpp
     src/carservice.cpp
+    src/carpropertyids.cpp
     src/main.cpp
 )
 
