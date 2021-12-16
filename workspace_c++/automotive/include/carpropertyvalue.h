@@ -15,6 +15,12 @@ public:
     // move
     CarPropertyValue(CarPropertyValue&& prop);
 
+    // conversion constructor
+    explicit CarPropertyValue(std::pair<int, int>);
+
+    // conversion operator
+    explicit operator int();
+
     // operator copy assignment
     CarPropertyValue& operator=(const CarPropertyValue& prop);
 

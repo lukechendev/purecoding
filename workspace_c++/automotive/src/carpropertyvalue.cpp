@@ -19,6 +19,16 @@ CarPropertyValue::CarPropertyValue(CarPropertyValue&& prop) {
     value = std::move(prop.value);
 }
 
+CarPropertyValue::CarPropertyValue(std::pair<int, int> pair) {
+    std::cout << "CarPropertyValue conversion constructor" << std::endl;
+    id = pair.first;
+    value = pair.second;
+}
+
+CarPropertyValue::operator int() {
+    return value;
+}
+
 CarPropertyValue& CarPropertyValue::operator=(const CarPropertyValue& prop) {
     std::cout << "CarPropertyValue copy assignment" << std::endl;
 
