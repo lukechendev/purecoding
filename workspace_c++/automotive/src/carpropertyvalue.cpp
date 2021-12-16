@@ -50,6 +50,11 @@ CarPropertyValue& operator<<(CarPropertyValue& prop, const int newValue) {
     return prop;
 }
 
+CarPropertyValue& CarPropertyValue::operator<<(const double newValue) {
+    value = newValue;
+    return *this;
+}
+
 std::istream& operator>>(std::istream& is, CarPropertyValue& prop) {
     is >> prop.value;
     return is;

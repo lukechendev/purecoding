@@ -72,6 +72,11 @@ void testOperators(CarPropertyManager& propManager) {
     cp1 << std::numeric_limits<int>::max();
     cout << cp1 << endl;
 
+    // property operator << double
+    cout << "***property operator << double***********************" << endl;
+    cp1 << 3.234;
+    cout << cp1 << endl;
+
     // property operator istream >>
     cout << "***property operator istream >>***********************" << endl;
     // cin >> cp1; // uncomment to execute

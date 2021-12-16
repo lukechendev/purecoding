@@ -24,6 +24,7 @@ public:
     // operator <<
     friend std::ostream& operator<<(std::ostream& os, const CarPropertyValue& prop);
 
+    CarPropertyValue& operator<<(const double newValue);
     friend CarPropertyValue& operator<<(CarPropertyValue& prop, const int newValue);
 
     // operator >>
@@ -38,8 +39,6 @@ public:
     friend CarPropertyValue& operator+=(CarPropertyValue& p1, CarPropertyValue& p2);
 
     CarPropertyValue& operator+=(const int more);
-
-    // operator <<
 
     int getId() const;
     int getValue() const;
