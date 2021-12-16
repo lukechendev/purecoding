@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "include/carpropertyvalue.h"
+#include "include/carpropertyids.h"
 
 CarPropertyValue::CarPropertyValue(int id, int value) : id(id), value(value) {
     std::cout << "CarPropertyValue constructor" << std::endl;
@@ -36,6 +37,21 @@ CarPropertyValue& CarPropertyValue::operator=(CarPropertyValue&& prop) {
     }
 
     return *this;
+}
+
+std::ostream& operator<<(std::ostream& os, const CarPropertyValue& prop) {
+    os << CarPropertyIds::ALL.at(prop.id) << "=" << prop.value;
+    return os;
+}
+
+CarPropertyValue& operator<<(CarPropertyValue& prop, const int newValue) {
+    prop.value = newValue;
+    return prop;
+}
+
+std::istream& operator>>(std::istream& is, CarPropertyValue& prop) {
+    is >> prop.value;
+    return is;
 }
 
 CarPropertyValue& CarPropertyValue::operator+=(const CarPropertyValue& prop) {
