@@ -2,8 +2,6 @@
 
 #include "include/carmanagerbase.h"
 
-using namespace std;
-
 CarManagerBase::CarManagerBase() {
-    cout << "CarManagerBase constructor" << endl;
+    std::cout << "CarManagerBase constructor" << std::endl;
 }

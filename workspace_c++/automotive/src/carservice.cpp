@@ -6,7 +6,7 @@
 #include "include/carpropertyids.h"
 
 CarService::CarService() {
-    cout << "CarService constructor" << endl;
+    std::cout << "CarService constructor" << std::endl;
 
     // TODO: fetch in a background thread
     fetchProperties();
@@ -41,7 +41,7 @@ void CarService::fetchProperties() {
         // TODO remotely fetch from CANService
         std::random_device generator;
         std::mt19937 mt(generator());
-        std:uniform_int_distribution<int> distribution(1, 100);
+        std::uniform_int_distribution<int> distribution(1, 100);
         int propValue = distribution(mt);
 
         props.emplace(propId, CarPropertyValue(propId, propValue));

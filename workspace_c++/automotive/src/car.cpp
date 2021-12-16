@@ -4,10 +4,8 @@
 #include "include/carmanagerbase.h"
 #include "include/carpropertymanager.h"
 
-using namespace std;
-
 Car::Car() {
-    cout << "Car constructor" << endl;
+    std::cout << "Car constructor" << std::endl;
 }
 
 CarManagerBase* Car::getCarManager(CarManagerType type) {

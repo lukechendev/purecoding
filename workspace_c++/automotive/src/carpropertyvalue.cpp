@@ -2,20 +2,24 @@
 
 #include "include/carpropertyvalue.h"
 
-using namespace std;
-
 CarPropertyValue::CarPropertyValue(int id, int value) : id(id), value(value) {
-    cout << "CarPropertyValue constructor" << endl;
+    std::cout << "CarPropertyValue constructor" << std::endl;
 }
 
 CarPropertyValue::CarPropertyValue(const CarPropertyValue& prop) {
-    cout << "CarPropertyValue copy constructor" << endl;
+    std::cout << "CarPropertyValue copy constructor" << std::endl;
     id = prop.id;
     value = prop.value;
 }
 
+CarPropertyValue::CarPropertyValue(CarPropertyValue&& prop) {
+    std::cout << "CarPropertyValue move constructor" << std::endl;
+    id = std::move(prop.id);
+    value = std::move(prop.value);
+}
+
 CarPropertyValue& CarPropertyValue::operator=(const CarPropertyValue& prop) {
-    cout << "CarPropertyValue copy =" << endl;
+    std::cout << "CarPropertyValue copy assignment" << std::endl;
 
     if (id == prop.id) {
         value = prop.value;
@@ -25,17 +29,17 @@ CarPropertyValue& CarPropertyValue::operator=(const CarPropertyValue& prop) {
 }
 
 CarPropertyValue& CarPropertyValue::operator=(CarPropertyValue&& prop) {
-    cout << "CarPropertyValue move =" << endl;
+    std::cout << "CarPropertyValue move assignment" << std::endl;
 
     if (id == prop.id) {
-        value = move(prop.value);
+        value = std::move(prop.value);
     }
 
     return *this;
 }
 
 CarPropertyValue& CarPropertyValue::operator+=(const CarPropertyValue& prop) {
-    cout << "CarPropertyValue +=" << endl;
+    std::cout << "CarPropertyValue +=" << std::endl;
     if (id == prop.id) {
         value += prop.value;
     }

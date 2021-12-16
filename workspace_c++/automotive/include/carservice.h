@@ -5,8 +5,6 @@
 
 #include "carpropertyvalue.h"
 
-using namespace std;
-
 class CarService {
 
 public:

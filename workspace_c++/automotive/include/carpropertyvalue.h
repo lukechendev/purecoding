@@ -10,10 +10,13 @@ public:
     // copy
     CarPropertyValue(const CarPropertyValue& prop);
 
-    // operator = copy
+    // move
+    CarPropertyValue(CarPropertyValue&& prop);
+
+    // operator copy assignment
     CarPropertyValue& operator=(const CarPropertyValue& prop);
 
-    // operator = move
+    // operator move assignment
     CarPropertyValue& operator=(CarPropertyValue&& prop);
 
     // operator +=
