@@ -12,27 +12,37 @@ CarPropertyValue f(CarPropertyValue prop) {
     return prop;
 }
 
-int main()
-{
-    Car car = Car();
-    CarPropertyManager* propManager = (CarPropertyManager*) car.getCarManager(CarManagerType::Property);
-
+void listProperties(CarPropertyManager& propManager) {
     // list all properties
     cout << "***list all properties***********************" << endl;
     for (const auto& prop : CarPropertyIds::ALL) {
         auto propId = prop.first;
         auto propStr = prop.second;
-        auto propValue = propManager->getProperty(propId).getValue();
+        auto propValue = propManager.getProperty(propId).getValue();
         cout << propStr << "=" << propValue << endl;
     }
+}
 
+void testConstructors(CarPropertyManager& propManager) {
     // copy construct property
     cout << "***copy construct property***********************" << endl;
-    CarPropertyValue cp1(propManager->getProperty(CarPropertyIds::INFO_VIN));
+    CarPropertyValue cp1(propManager.getProperty(CarPropertyIds::INFO_VIN));
 
     // move construct property
     cout << "***move construct property***********************" << endl;
-    CarPropertyValue cp2(std::move(propManager->getProperty((CarPropertyIds::ENGINE_OIL_LEVEL))));
+    CarPropertyValue cp2(std::move(propManager.getProperty((CarPropertyIds::ENGINE_OIL_LEVEL))));
+
+    cout << "**************************" << endl;
+}
+
+void testOperators(CarPropertyManager& propManager) {
+    // copy construct property
+    cout << "***copy construct property***********************" << endl;
+    CarPropertyValue cp1(propManager.getProperty(CarPropertyIds::INFO_VIN));
+
+    // move construct property
+    cout << "***move construct property***********************" << endl;
+    CarPropertyValue cp2(std::move(propManager.getProperty((CarPropertyIds::ENGINE_OIL_LEVEL))));
 
     // property copy assignment
     cout << "***property copy assignment***********************" << endl;
@@ -86,6 +96,16 @@ int main()
     cout << cp1 << endl;
 
     cout << "**************************" << endl;
+}
+
+int main()
+{
+    Car car = Car();
+    CarPropertyManager* propManager = (CarPropertyManager*) car.getCarManager(CarManagerType::Property);
+
+    listProperties(*propManager);
+    testConstructors(*propManager);
+    testOperators(*propManager);
 
     delete propManager;
     return 0;
