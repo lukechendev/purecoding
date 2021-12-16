@@ -54,12 +54,31 @@ std::istream& operator>>(std::istream& is, CarPropertyValue& prop) {
     return is;
 }
 
+CarPropertyValue& operator>>(const int newValue, CarPropertyValue& prop) {
+    prop.value = newValue;
+    return prop;
+}
+
 CarPropertyValue& CarPropertyValue::operator+=(const CarPropertyValue& prop) {
-    std::cout << "CarPropertyValue +=" << std::endl;
+    std::cout << "CarPropertyValue += member" << std::endl;
     if (id == prop.id) {
         value += prop.value;
     }
 
+    return *this;
+}
+
+CarPropertyValue& operator+=(CarPropertyValue& p1, CarPropertyValue& p2) {
+    std::cout << "CarPropertyValue += non-member" << std::endl;
+    if (p1.id == p2.id) {
+        p1.value += p2.value;
+    }
+
+    return p1;
+}
+
+CarPropertyValue& CarPropertyValue::operator+=(const int more) {
+    value += more;
     return *this;
 }
 

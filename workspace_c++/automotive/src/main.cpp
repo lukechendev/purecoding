@@ -67,6 +67,22 @@ int main()
     // cin >> cp1; // uncomment to execute
     cout << cp1 << endl;
 
+    // property operator int >>
+    cout << "***property operator int >>***********************" << endl;
+    333 >> cp1;
+    cout << cp1 << endl;
+
+    // property operator +=
+    cout << "***property operator +=***********************" << endl;
+    CarPropertyValue cp1more(CarPropertyIds::INFO_VIN, 100);
+    cp1 += cp1more;
+    cout << cp1 << endl;
+
+    // property operator += int
+    cout << "***property operator +=***********************" << endl;
+    cp1 += 100;
+    cout << cp1 << endl;
+
     cout << "**************************" << endl;
 
     delete propManager;
