@@ -34,6 +34,7 @@ CarPropertyValue& CarPropertyValue::operator=(CarPropertyValue&& prop) {
 
     if (id == prop.id) {
         value = std::move(prop.value);
+        prop.value = 0;
     }
 
     return *this;
