@@ -1,0 +1,34 @@
+Given a grid with Red and Green cells,
+always flip the top left corner one from R to G or from G to R.
+Every time, you can flip the top left corner one with all its same color connected neighbors.
+Question, how many times to flip all to a same color.
+
+RG
+GR
+
+to
+
+GG
+GR
+
+to
+
+RR
+RR
+
+Answer: 2
+
+---
+
+RRR
+GRR
+
+to
+
+GGG
+GGG
+
+Answer: 1
+
+
+---
