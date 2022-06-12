@@ -1,3 +1,5 @@
+import * as model from './model/DbData'
+
 interface IServer {
     startServer(): void;
     stopServer(): void;
@@ -20,12 +22,12 @@ abstract class BaseServer implements IServer {
 
 class DbServer extends BaseServer {
     private isActive: boolean = false;
-    private data: string = "";
-    private error: string = "";
+    private data: model.DbData;
 
     constructor(address: string, port: string) {
         super(address, port);
         console.log("construct DbServer")
+        this.data = new model.DbData();
     }
 
     startServer(): void {
@@ -40,17 +42,17 @@ class DbServer extends BaseServer {
 
     async getData() {
         await this.syncDataFromServer();
-        console.log(`Data from db server: ${this.data}`);
+        console.log(`Data from db server: ${this.data.value}`);
     }
 
     async syncDataFromServer() {
         console.log("Syncing data from DB server");
 
         try {
-            this.data = await this.getDataAsync();
+            this.data.value = await this.getDataAsync();
         } catch (e) {
-            this.error = String(e);
-            console.log(`Error from db server: ${this.error}`);
+            this.data.error = String(e);
+            console.log(`Error from db server: ${this.data.error}`);
         }
     }
 
@@ -70,4 +72,4 @@ class DbServer extends BaseServer {
 const dbServer: IServer = new DbServer("127.0.0.1", "80");
 dbServer.startServer();
 dbServer.getData();
-dbServer.stopServer();
+// dbServer.stopServer();
