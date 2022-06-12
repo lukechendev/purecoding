@@ -3,7 +3,7 @@ import * as model from './model/DbData'
 interface IServer {
     startServer(): void;
     stopServer(): void;
-    getData(): any;
+    getData(): void;
 }
 
 abstract class BaseServer implements IServer {
@@ -17,7 +17,7 @@ abstract class BaseServer implements IServer {
     }
     abstract startServer(): void;
     abstract stopServer(): void;
-    abstract getData(): any;
+    abstract getData(): void;
 }
 
 class DbServer extends BaseServer {
@@ -35,9 +35,13 @@ class DbServer extends BaseServer {
         this.isActive = true;
     }
 
-    stopServer(): void {
-        console.log("Stopped DB server");
-        this.isActive = false;
+    async stopServer() {
+        await new Promise(resolve =>
+            setTimeout(() => {
+                this.isActive = false; 
+                console.log("Stopped DB server");
+            }, 2000)
+        );
     }
 
     async getData() {
@@ -72,4 +76,4 @@ class DbServer extends BaseServer {
 const dbServer: IServer = new DbServer("127.0.0.1", "80");
 dbServer.startServer();
 dbServer.getData();
-// dbServer.stopServer();
+dbServer.stopServer();
